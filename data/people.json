@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Aarav Sharma",
+    "designation": "Full Stack Developer",
+    "bio": "Passionate about building scalable web applications and exploring cloud technologies.",
+    "profile_image_url": "https://randomuser.me/api/portraits/men/45.jpg",
+    "is_verified": true 
+  },
+  {
+    "name": "Priya Nair",
+    "designation": "UI/UX Designer",
+    "bio": "Design enthusiast creating intuitive and user-friendly experiences.",
+    "profile_image_url": "https://randomuser.me/api/portraits/women/65.jpg",
+    "is_verified": true
+  },
+  {
+    "name": "Karan Verma",
+    "designation": "Data Scientist",
+    "bio": "Loves working with data, machine learning, and predictive analytics.",
+    "profile_image_url": "https://randomuser.me/api/portraits/men/12.jpg",
+    "is_verified": true
+  },
+  {
+    "name": "Sneha Rao",
+    "designation": "Product Manager",
+    "bio": "Focused on delivering customer-centric solutions with cross-functional teams.",
+    "profile_image_url": "https://randomuser.me/api/portraits/women/22.jpg",
+    "is_verified": true
+  },
+  {
+    "name": "Rohan Mehta",
+    "designation": "Mobile App Developer",
+    "bio": "Specializes in building cross-platform apps with React Native and Flutter.",
+    "profile_image_url": "https://randomuser.me/api/portraits/men/33.jpg",
+    "is_verified": true
+  }
+]

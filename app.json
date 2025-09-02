@@ -37,6 +37,13 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "APPWRITE_PROJECT_ID": "68b55c28000ce2d44e7b",
+      "APPWRITE_PROJECT_NAME": "jamm-proto",
+      "APPWRITE_ENDPOINT": "https://fra.cloud.appwrite.io/v1",
+      "APPWRITE_DATABASE_ID": "68b58955003b7fd1ca48",
+      "APPWRITE_API_KEY": "standard_1c19379165b82cf587f571d4e010adedf64a0445f2f1f3e29078671d7a1a7daa1b7405860d4e33b64863f9221ed6643a54c05cf04f37af3104a3be2b44d57a47193444c81608664166029576fc88a0f1a13c0edfbbc401cc65c636ecec695e5813941a3126afa034d0269a44e11ce488bf64763c46164af739169e4726712f65"
     }
   }
 }

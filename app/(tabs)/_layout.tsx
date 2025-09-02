@@ -1,12 +1,14 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Image, Platform, Text, View } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import TabBarIconWithBadge from '@/components/TabBarIconWithBadge';
+import { ThemedText } from '@/components/ThemedText';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -15,7 +17,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
+        headerShown: true,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
@@ -29,15 +31,291 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'People',
+          tabBarIcon: ({ color }) => <Ionicons name="person-outline" size={24} color={color} />,
+          headerStyle: {
+          },
+          headerTintColor: Colors.light.tint, // Text/icon color
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 24,
+            color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text
+          },
+          headerTitleAlign: 'center', // Center align title
+          headerLeft: () => (
+            <View 
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 4,
+              marginLeft: 16
+            }}
+            >
+              <View 
+              style={{
+                height: 8,
+                width: 8,
+                backgroundColor: '#0CC36D',
+                borderRadius: 100
+              }}
+              ></View>
+              <ThemedText>BLR</ThemedText> 
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ marginRight: 16 }}>
+              <View style={{position: "relative",}}>
+                <Image
+                  source={require("@/assets/images/avatar.png")}
+                  style={{width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                  }}
+                />
+                <View style={{
+                  position: "absolute",
+                  bottom: 0,
+                  right: 0,
+                  backgroundColor: "red",
+                  borderRadius: 10,
+                  width: 'auto',
+                  height: 18,
+                  paddingHorizontal: 8,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderWidth: 2,
+                  borderColor: "#fff",
+                }}>
+                  <Text style={{
+                    color: "white",
+                    fontSize: 10,
+                    fontWeight: "bold"
+                  }}>42%</Text>
+                </View>
+              </View>
+            </View>
+          )
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="jamms"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Jamms',
+          tabBarIcon: ({ color }) => <Ionicons name="calendar-clear-outline" size={24} color={color} />,
+          headerStyle: {
+          },
+          headerTintColor: Colors.light.tint, // Text/icon color
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 24,
+            color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text
+          },
+          headerTitleAlign: 'center', // Center align title
+          headerLeft: () => (
+            <View 
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 4,
+              marginLeft: 16
+            }}
+            >
+              <View 
+              style={{
+                height: 8,
+                width: 8,
+                backgroundColor: '#0CC36D',
+                borderRadius: 100
+              }}
+              ></View>
+              <ThemedText>BLR</ThemedText> 
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ marginRight: 16 }}>
+              <View style={{position: "relative",}}>
+                <Image
+                  source={require("@/assets/images/avatar.png")}
+                  style={{width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                  }}
+                />
+                <View style={{
+                  position: "absolute",
+                  bottom: 0,
+                  right: 0,
+                  backgroundColor: "red",
+                  borderRadius: 10,
+                  width: 'auto',
+                  paddingHorizontal: 8,
+                  height: 18,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderWidth: 2,
+                  borderColor: "#fff",
+                }}>
+                  <Text style={{
+                    color: "white",
+                    fontSize: 10,
+                    fontWeight: "bold"
+                  }}>42%</Text>
+                </View>
+              </View>
+            </View>
+          )
+        }}
+      />
+      <Tabs.Screen
+        name="requests"
+        options={{
+          title: 'Requests',
+          tabBarIcon: ({ color }) => <TabBarIconWithBadge
+            name="star-outline"
+            color={color}
+            size={24}
+            badgeCount={2} 
+          />,
+          headerStyle: {
+          },
+          headerTintColor: Colors.light.tint, // Text/icon color
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 24,
+            color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text
+          },
+          headerTitleAlign: 'center', // Center align title
+          headerLeft: () => (
+            <View 
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 4,
+              marginLeft: 16
+            }}
+            >
+              <View 
+              style={{
+                height: 8,
+                width: 8,
+                backgroundColor: '#0CC36D',
+                borderRadius: 100
+              }}
+              ></View>
+              <ThemedText>BLR</ThemedText> 
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ marginRight: 16 }}>
+              <View style={{position: "relative",}}>
+                <Image
+                  source={require("@/assets/images/avatar.png")}
+                  style={{width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                  }}
+                />
+                <View style={{
+                  position: "absolute",
+                  bottom: 0,
+                  right: 0,
+                  backgroundColor: "red",
+                  borderRadius: 10,
+                  width: 'auto',
+                  height: 18,
+                  paddingHorizontal: 8,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderWidth: 2,
+                  borderColor: "#fff",
+                }}>
+                  <Text style={{
+                    color: "white",
+                    fontSize: 10,
+                    fontWeight: "bold"
+                  }}>42%</Text>
+                </View>
+              </View>
+            </View>
+          )
+        }}
+      />
+      <Tabs.Screen
+        name="chats"
+        options={{
+          title: 'Chats',
+          tabBarIcon: ({ color }) => <TabBarIconWithBadge
+            name="chatbox-outline"
+            color={color}
+            size={24}
+            badgeCount={23} 
+          />,
+          headerStyle: {
+          },
+          headerTintColor: Colors.light.tint, // Text/icon color
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 24,
+            color: colorScheme === 'dark' ? Colors.dark.text : Colors.light.text
+          },
+          headerTitleAlign: 'center', // Center align title
+          headerLeft: () => (
+            <View 
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 4,
+              marginLeft: 16
+            }}
+            >
+              <View 
+              style={{
+                height: 8,
+                width: 8,
+                backgroundColor: '#0CC36D',
+                borderRadius: 100
+              }}
+              ></View>
+              <ThemedText>BLR</ThemedText> 
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ marginRight: 16 }}>
+              <View style={{position: "relative",}}>
+                <Image
+                  source={require("@/assets/images/avatar.png")}
+                  style={{width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                  }}
+                />
+                <View style={{
+                  position: "absolute",
+                  bottom: 0,
+                  right: 0,
+                  backgroundColor: "red",
+                  borderRadius: 10,
+                  width: 'auto',
+                  height: 18,
+                  paddingHorizontal: 8,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderWidth: 2,
+                  borderColor: "#fff",
+                }}>
+                  <Text style={{
+                    color: "white",
+                    fontSize: 10,
+                    fontWeight: "bold"
+                  }}>42%</Text>
+                </View>
+              </View>
+            </View>
+          )
         }}
       />
     </Tabs>

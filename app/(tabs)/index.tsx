@@ -1,75 +1,115 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+import CreateJammFab from '@/components/CreateJammFab';
+import CreateJammFormSlideModal from '@/components/CreateJammModal';
 import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { Colors } from '@/constants/Colors';
+import peopleDataList from '@/data/people.json';
+import { useEffect, useRef, useState } from 'react';
+import { Animated, Image, StyleSheet, useColorScheme, View } from 'react-native';
+import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
 
 export default function HomeScreen() {
+  const colorScheme = useColorScheme();
+  const [visible, setVisible] = useState(false);
+  const slideAnim = useRef(new Animated.Value(640)).current; // start off-screen (bottom)
+
+  useEffect(() => {
+    if (visible) {
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(slideAnim, {
+        toValue: 640,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [visible]);
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <GestureHandlerRootView 
+    style={{ 
+      flex: 1, 
+      backgroundColor: colorScheme === 'dark' ? Colors.dark.background : Colors.light.background 
+    }}>
+      <ScrollView style={{ paddingHorizontal: 16, paddingVertical: 16, }}>
+        {/* people list */}
+        {
+          peopleDataList.map((item, index) => (
+            <PeopleCard personDetails={item} key={index}/>
+          ))
+        }
+      </ScrollView>
+      <CreateJammFab onPress={() => setVisible(true)} titleVerb='Post a '/>
+      <CreateJammFormSlideModal visible={visible} setVisible={setVisible} slideAnim={slideAnim}/>
+    </GestureHandlerRootView>
   );
 }
 
+type TPeopleCardProps = {
+    personDetails: {
+      name: string,
+      designation: string,
+      bio: string,
+      profile_image_url: string,
+      is_verified: boolean
+    }
+};
+
+
+const PeopleCard: React.FC<TPeopleCardProps> = ({ personDetails }) => {
+  return (
+    <View
+    style={{
+      marginBottom: 24,
+      borderBottomWidth: 1,
+      borderBottomColor: '#1e1e1e24',
+      paddingBottom: 24
+    }}
+    >
+      <View
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+        gap: 8,
+      }}
+      >
+        <ThemedText
+        style={{
+          fontSize: 24,
+        }}
+        >{personDetails.name}</ThemedText>
+        {
+          personDetails.is_verified && 
+          <Image 
+          source={require('@/assets/images/verified-badge.png')} 
+          style={{ width: 24, height: 24, borderRadius: 24 }} />
+        }
+      </View>
+      <ThemedText style={{fontSize: 14, marginBottom: 8}}>{personDetails.designation}</ThemedText>
+      <Image source={{ uri: personDetails.profile_image_url }} style={{ width: '100%', aspectRatio: 1, borderRadius: 16 }} />
+      <ThemedText style={{fontSize: 16, marginTop: 14}}>{personDetails.bio}</ThemedText>
+    </View>
+  )
+}
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  openButton: { backgroundColor: '#1e1e2f', padding: 12, borderRadius: 8 },
+  buttonText: { color: 'white', fontSize: 16 },
+  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' },
+  popup: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  title: { fontSize: 18, fontWeight: 'bold' },
+  input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 10, marginTop: 12 },
+  submitButton: { backgroundColor: '#1e1e2f', padding: 12, borderRadius: 8, marginTop: 15, alignItems: 'center' },
+  submitText: { color: 'white', fontSize: 16 },
 });

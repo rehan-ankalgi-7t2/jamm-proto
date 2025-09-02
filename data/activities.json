@@ -1,0 +1,167 @@
+[
+    {
+        "label": "Breakfast",
+        "value": "breakfast",
+        "icon": ""
+    },
+    {
+        "label": "Brunch",
+        "value": "brunch",
+        "icon": ""
+    },
+    {
+        "label": "Lunch",
+        "value": "lunch",
+        "icon": ""
+    },
+    {
+        "label": "Dinner",
+        "value": "dinner",
+        "icon": ""
+    },
+    {
+        "label": "Coffee",
+        "value": "coffee",
+        "icon": ""
+    },
+    {
+        "label": "Picnic",
+        "value": "picnic",
+        "icon": ""
+    },
+    {
+        "label": "Barbeque",
+        "value": "barbeque",
+        "icon": ""
+    },
+    {
+        "label": "Board Games",
+        "value": "board_games",
+        "icon": ""
+    },
+    {
+        "label": "House Party",
+        "value": "house_party",
+        "icon": ""
+    },
+    {
+        "label": "Pot Luck",
+        "value": "pot_luck",
+        "icon": ""
+    },
+    {
+        "label": "Bike Ride",
+        "value": "bike_ride",
+        "icon": ""
+    },
+    {
+        "label": "Movie",
+        "value": "movie",
+        "icon": ""
+    },
+    {
+        "label": "Road Trip",
+        "value": "road_trip",
+        "icon": ""
+    },
+    {
+        "label": "Karaoke",
+        "value": "karaoke",
+        "icon": ""
+    },
+    {
+        "label": "Outdoor Event",
+        "value": "outdoor_event",
+        "icon": ""
+    },
+    {
+        "label": "Concert",
+        "value": "concert",
+        "icon": ""
+    },
+    {
+        "label": "Party",
+        "value": "party",
+        "icon": ""
+    },
+    {
+        "label": "Live Music",
+        "value": "live_music",
+        "icon": ""
+    },
+    {
+        "label": "Art & Craft",
+        "value": "art_carft",
+        "icon": ""
+    },
+    {
+        "label": "Volunteer",
+        "value": "volunteer",
+        "icon": ""
+    },
+    {
+        "label": "Cooking",
+        "value": "cooking",
+        "icon": ""
+    },
+    {
+        "label": "Health & Fitness",
+        "value": "health_fitness",
+        "icon": ""
+    },
+    {
+        "label": "Themed Party",
+        "value": "themed_party",
+        "icon": ""
+    },
+    {
+        "label": "Book reading",
+        "value": "book_reading",
+        "icon": ""
+    },
+    {
+        "label": "Gaming",
+        "value": "gaming",
+        "icon": ""
+    },
+    {
+        "label": "Shopping",
+        "value": "shopping",
+        "icon": ""
+    },
+    {
+        "label": "Nature Walking",
+        "value": "nature_walking",
+        "icon": ""
+    },
+    {
+        "label": "Standup Comedy",
+        "value": "standup_comedy",
+        "icon": ""
+    },
+    {
+        "label": "Sight Seeing",
+        "value": "sight_seeing",
+        "icon": ""
+    },
+    {
+        "label": "Pet Meetup",
+        "value": "pet_meetup",
+        "icon": ""
+    },
+    {
+        "label": "Camping",
+        "value": "camping",
+        "icon": ""
+    },
+    {
+        "label": "Sports",
+        "value": "sports",
+        "icon": ""
+    },
+    {
+        "label": "Workshop",
+        "value": "workshop",
+        "icon": ""
+    }
+]
